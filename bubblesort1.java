@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class bubblesort1{
 	
     
@@ -36,4 +37,7 @@ public class bubblesort1{
                     arr[j + 1] = temp;
                 }
             }
+	}
+    }
+}
 	   
