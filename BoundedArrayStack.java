@@ -1,74 +1,83 @@
-import java.util.NoSuchElementException;                //LIFO
-
+import java.util.NoSuchElementException;
 public class BoundedArrayStack {
-    
-    private int maxsize; //size of the stack array
-    private int[] stackArray; //array creation
-    private int tos; //top of the stack
 
-    public BoundedArrayStack (int s){
+    private int maxSize;//size of the stack array
+    private int[] array;//array creation
+    private int tos;//top of the stack
 
-        maxsize = s; // set array size
-        stackArray = new int [maxsize]; 
-        tos = -1; //no item in this stack
+    public BoundedArrayStack(int s){
+        maxSize =5;//set array size
+        array =new int[maxSize];
+        tos=-1;//no item
+
+
     }
-
-    //is Empty method 
-    public boolean isEmpty() {
-        return tos == -1; //stack is full if the top reaches maxsize - 1
+    //is empty method
+    public boolean isEmpty()
+    {
+        return tos ==-1;//stack is empty when the top is -1
     }
 
     //isFull method
-	public boolean isfull()
-	{
-		return tos == maxsize - 1; //stack is full if the top reaches maxSize - 1
-	}
+    public boolean isFull()
+    {
+        return tos==maxSize-1;//stack is full if the top reaches maxSize-1;
 
-
-    //push operation 
-    public void push(int j){
+    }
+    //push operation
+    public void push(int j)
+    {
         //check whether the stack is full
-        if(isfull()){
+        if(isFull())
+        {
             throw new IllegalStateException("Stack is full");
-        }else{
-            //increament top
-            //inser item
-            stackArray[++tos] = j;
+        }
+        else{
+            //increment top
+            //insert item
+            array[++tos]=j;
         }
     }
-
-    // pop operation
-    public int pop(){
-        //Check whether stack is empty
+    
+    public int pop()
+    { //check whether the stack is empty
         //if not
-        // access item
-        if(isEmpty()){
-            throw new NoSuchElementException("Stack is empty");
-        }else {
-            return stackArray[tos --];
+        //access item
+        if(isEmpty())
+        {
+            throw new NoSuchElementException("stack id empty");
+        }
+        else
+        {
+            return array[tos--];
         }
     }
 
-    //peek operation
-	public int peek()
-	{
-		if(tos==-1)
-		{
-			throw new NoSuchElementException("Stack is empty");
-		}
-		else
-		{
-			return stackArray[tos];
-		}
-	}
+//peek operation
+public int peek()
+{
+    if(tos==-1)
+    {
+        throw new NoSuchElementException("Stack is empty");
 
-
-    public void display(){
-        System.out.print("Stack elements: [");
-        for (int i = tos; i >= 0; i--){ // Traverse from 
-            System.out.print(stackArray [i] + " ");
-        }
-        System.out.println(("]"));
     }
+    else{
+        return array[tos];
 
+    }
+}
+
+public void print()
+{
+    System.out.print("Stack elements [ ");
+    for(int i=tos; i>=0;i--)//Traverse from bottom to top
+    {
+        System.out.println(array[i]+" ");
+    }
+    System.out.println("]");
+}
+
+   
+    
+    
 }
